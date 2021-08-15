@@ -43,14 +43,16 @@
  */
 
 /**
+ * Big O is O(n^3)
  * @param {string[]} inputs - claim like #123 @ 3,2: 5x4 claim id: 123 , left edge: 3 , top edge : 2 , width : 5 , height 4
  * @return {number} overlapping
  */
 export function overlap(inputs) {
     const FABRIC_ARRAY_SIZE = 1000
-    //create 2d array
+    //create 2d array with dimension 1000x1000
     let fabric = Array(FABRIC_ARRAY_SIZE).fill().map(row => Array(FABRIC_ARRAY_SIZE).fill(0));
 
+    // find overlappingSpots
     let overlappingSpots = 0;
 
     //@ example #2 @ 3,1: 4x4
@@ -58,11 +60,12 @@ export function overlap(inputs) {
 
     inputs.forEach(input => {
         //key: #123 @ 3,2: 5x4,  claim id: 123 , left edge: 3 , top edge : 2 , width : 5 , height 4
+        // change all value to int except key
         let [key, claimId, leftEdge, topEdge, width, height] = Array.from(regexpForInput.exec(input).map(
             (value, index) => index === 0 ? value : parseInt(value)
             )
         )
-
+        // increment fabric coordinate by 1
         for (let i = 0; i < width; i++) {
             for (let j = 0; j < height; j++) {
                 fabric[leftEdge + i][topEdge + j] += 1;
@@ -70,6 +73,7 @@ export function overlap(inputs) {
         }
     });
 
+    // loop through fabric and count how many spots are greater than 1 which are overlapping spots
     fabric.forEach(row => {
         row.forEach(cell => {
             if (cell > 1) {

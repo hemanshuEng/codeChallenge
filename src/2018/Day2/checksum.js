@@ -26,17 +26,22 @@
 
 
 /**
- *
+ * Big o is O(n^2)
  * Find checkSum for list of box IDs Array
  * @param {string[]} ids - list of box Ids
  * @return {number} - checksum
  */
 
 export function checkSum(ids) {
+    // check count 2 and 3
     let twoMultiplier = 0;
     let threeMultiplier = 0;
+
+    // iterate through array of inputs with characters
     ids.forEach(id => {
+        //create empty object
         let letterCountHash = {};
+        //go through each character and count them, key: character and value: count
         for (let character of id) {
             if (!letterCountHash[character]) {
                 letterCountHash[character] = 1;
@@ -44,15 +49,18 @@ export function checkSum(ids) {
                 letterCountHash[character]++;
             }
         }
+        // get all value in array
         let letterCount = Object.values(letterCountHash);
-
+        // if it includes two counts in array condition true , and it will increment global twoMultiplier
         if (letterCount.includes(2)) {
             twoMultiplier++;
         }
+        // if it includes three counts in array condition true , and it will increment global threeMultiplier
         if (letterCount.includes(3)) {
             threeMultiplier++;
         }
     });
+    //print checksum and return value of checksum
     console.log(`IDs with 2 repeated letters: ${twoMultiplier} `);
     console.log(`IDs with 3 repeated letters: ${threeMultiplier}`);
     console.log(`checksum = ${twoMultiplier} * ${threeMultiplier} = ${twoMultiplier * threeMultiplier}`)
