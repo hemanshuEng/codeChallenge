@@ -1,6 +1,6 @@
 ### Advent of Code Challenge    
-#### 2018 DAY 2 and DAY 3    
-
+#### 2018 DAY 2 and DAY 3
+##### ![Test]((https://github.com/hemanshuEng/codeChallenge/actions/workflows/node.js.yml/badge.svg)
 ### Requirement    
 * node v12.22.3
 * yarn 1.22.5
