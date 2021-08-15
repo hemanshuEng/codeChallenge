@@ -32,24 +32,24 @@
  * @return {number} - checksum
  */
 
-export function checkSum(ids){
-    let twoMultiplier = 0 ;
+export function checkSum(ids) {
+    let twoMultiplier = 0;
     let threeMultiplier = 0;
     ids.forEach(id => {
         let letterCountHash = {};
-        for (let character of id ) {
-            if(!letterCountHash[character]) {
-                letterCountHash[character] =1;
+        for (let character of id) {
+            if (!letterCountHash[character]) {
+                letterCountHash[character] = 1;
             } else {
                 letterCountHash[character]++;
             }
         }
         let letterCount = Object.values(letterCountHash);
 
-        if(letterCount.includes(2)) {
+        if (letterCount.includes(2)) {
             twoMultiplier++;
         }
-        if(letterCount.includes(3)) {
+        if (letterCount.includes(3)) {
             threeMultiplier++;
         }
     });
